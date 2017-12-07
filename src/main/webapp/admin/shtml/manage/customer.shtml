@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="/admin/js/common/jquery-easyui-1.3.4/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/admin/js/common/jquery-easyui-1.3.4/themes/icon.css">
+<script type="text/javascript"
+	src="/admin/js/common/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+	src="/admin/js/common/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+
+<script type="text/javascript" src="/admin/js/manage/Customer/Customer.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<link href="/admin/css/PageCommon.css" rel="stylesheet" type="text/css" />
+</head>
+<input type="hidden" id="lastCode"/>
+	
+	
+	<form action="#" id="query_form">
+					<div class="filter-bar">
+						<table>
+							<tr>
+								<th>名称：</th>
+								<td><input type="text" class="i-txt" name="cnameSearch"
+									id="name" /></td>
+								<td><input type="button" value="检索" class="i-btn"
+									style="margin-left: 15px;" onclick="customer.search()">
+									<input type="button" value="重置" class="i-btn"
+									style="margin-left: 15px;" onclick="customer.reSearch();" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</form>
+				<div class="tool-bar">
+				    <a href="javascript:void(0)" onclick='customer.openCreate();' class="easyui-linkbutton" iconCls="icon-add" plain="true">新增组织</a>	
+				</div>
+				
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/customer',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+             
+             <th data-options="field:'sn',width:100">序列号</th>
+             <th data-options="field:'ip',width:100">IP</th>
+             <th data-options="field:'port',width:100">端口</th>
+             <th data-options="field:'name',width:100">客户名称</th>
+             <th data-options="field:'clientCount',width:100">终端总量</th>
+             <th data-options="field:'starTime',width:100">开始时间</th>
+             <th data-options="field:'endTime',width:100">结束时间</th>
+             <th data-options="field:'id',width:50" formatter="customer.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+
+
+
+<div id="createSite" class="easyui-dialog" closed="true" title="添加客户" modal="true"
+	 style="width:400px;padding: 15px;">
+	 
+	<form id="createSiteForm" method="post" >
+		<table width="100%" cellpadding="5">
+			<tr>
+				<td align="right">
+					名称: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="name"  maxLength="20" class="easyui-validatebox" id="name"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					序列号: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="sn"  maxLength="20" class="easyui-validatebox" id="sn"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					IP: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="ip"  maxLength="20" class="easyui-validatebox" id="ip"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					端口: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="port" required="true"   maxLength="40" class="easyui-numberbox" id="port"  />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					终端数量 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="clientCount" required="true"   maxLength="60" class="easyui-numberbox" id="clientCount"/>
+				</td>
+			</tr>
+				<tr>
+				<td align="right">
+						开始时间 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="stime" required="true"   maxLength="60" class="easyui-datebox" id="stime"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					结束时间 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="etime" required="true"   maxLength="40" class="easyui-datebox"  formatter="getdateymd"   id="etime"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="customer.save();">添加</a>
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#createSite').dialog('close'); ">取消</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+
+<div id="updateSite" class="easyui-dialog" closed="true"
+					title="修改类型" modal="true" style="width: 400px; padding: 15px;">
+					<form id="updateSiteForm" method="post">
+						<table width="100%" cellpadding="5">
+							<input type="hidden" name="_method" value="PUT" />
+							<input type="hidden" id="idUpdate" name="id">
+						
+			<tr>
+				<td align="right">
+					名称: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="name"  maxLength="20" class="easyui-validatebox" id="nameupdate"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					序列号: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="sn"  maxLength="20" class="easyui-validatebox" id="snupdate"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					IP: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input required="true" name="ip"  maxLength="20" class="easyui-validatebox" id="ipupdate"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					端口: &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="port" required="true"   maxLength="40" class="easyui-numberbox" id="portupdate"  />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					终端数量 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="clientCount" required="true"   maxLength="60" class="easyui-numberbox" id="clientCount"/>
+				</td>
+			</tr>
+				<tr>
+				<td align="right">
+						开始时间 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="stime" required="true"   maxLength="60" class="easyui-datebox" id="stimeupdate"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					结束时间 &nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+				<td>
+					<input name="etime" required="true"   maxLength="40" class="easyui-datebox" id="etimeupdate"/>
+				</td>
+			</tr>
+							<tr>
+								<td align="center" colspan="2"><a href="javascript:void(0)"
+									class="easyui-linkbutton" onclick="customer.update();">提交</a>
+									<a href="javascript:void(0)" class="easyui-linkbutton"
+									onclick="$('#updateSite').dialog('close'); ">取消</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/customer',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+</body>
+</html>

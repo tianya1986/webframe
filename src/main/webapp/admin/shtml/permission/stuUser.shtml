@@ -1,0 +1,201 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<div class="tool-bar">
+	<a href="javascript:void(0)" 
+		onclick='userInfo.openCreate();return false;'
+		class="easyui-linkbutton" iconCls="icon-add" plain="true">新增用户</a> 
+</div>
+
+<form action="#" id="query_form">
+	<div class="filter-bar">
+		<table>
+			<tr>
+				<th>用户名：</th>
+				<td><input type="text" class="i-txt" name="userName"
+					id="sel_user_name" /></td>
+				<th>登录名：</th>
+				<td><input type="text" class="i-txt" name="loginName"
+					id="sel_login_name" />
+					<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="userInfo.search()">
+			<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="userInfo.reSearch();"/>
+					</td>
+
+			</tr>
+		</table>
+	</div>
+</form>
+<table id="site-datagrid"  title="">
+	<thead>
+		<tr>
+			<th data-options="field:'userName',width:100">用户名</th>
+			<th data-options="field:'loginName',width:100">登录名</th>
+			<th data-options="field:'orgName',width:150">组织机构名</th>
+			<th data-options="field:'systemCode',width:150">用户类型</th>
+			<th data-options="field:'mobile',width:80">手机号码</th>
+			<th data-options="field:'email',width:100,align:'center'">邮件地址</th>
+			<th
+				data-options="field:'modifyTime',width:80,align:'center',formatter:function(value,row,index){  
+                         return new Date(value).toLocaleString();  
+                         }">修改时间</th>
+			<th
+				data-options="field:'id',width:50,align:'center',formatter:userInfo.fmtOperate">操作</th>
+		</tr>
+	</thead>
+</table>
+
+<div id="createSite" class="easyui-dialog" closed="true" title="增加用户"
+	modal="true" style="width: 400px; padding: 15px;">
+	<form id="createSiteForm" method="post" >
+		<table width="100%" cellpadding="5">
+			<input type="hidden" id="orgIdAdd" name="orgId">
+			<input type="hidden" id="superCodeAdd" name="superCode">
+			<input type="hidden" id="modifyUserAdd" name="modifyUser">
+			<tr>
+				<td align="right">用户名: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input required="true" id="userNameAdd" name="userName" maxLength="10"
+					class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td align="right">登录名: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input id="loginNameAdd" name="loginName" required="true" maxLength="20"
+					class="easyui-validatebox""/></td>
+			</tr>
+			<tr>
+				<td align="right">密 码: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input required="true" class="easyui-validatebox"
+					validType="minLength[6]" invalidMessage="至少6位字符" id="passwordAdd"
+					name="password" type="password" class="txt03" /></td>
+			</tr>
+			<tr>
+				<td align="right">手 机: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input id="mobileAdd" name="mobile" class="easyui-validatebox"
+					validType="telcheck" /></td>
+			</tr>
+			<tr>
+				<td align="right">邮件地址: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input class="easyui-validatebox" validType="email"
+					name="email" id="emailAdd" /></td>
+			</tr>
+			<tr>
+				<td align="right">用户类型: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<select id="systemCodeAdd" name="systemCode" class="easyui-combobox" required="true" style="width:173px;">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">组织机构: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<select id="orgAdd" class="easyui-combotree" style="width:173px;">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><a href="javascript:void(0)"
+					class="easyui-linkbutton" onclick="userInfo.save();">提交</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton"
+					onclick="$('#createSite').dialog('close');return false; ">取消</a></td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<div id="updateSite" class="easyui-dialog" closed="true" title="修改系统用户"
+	modal="true" style="width: 400px; padding: 15px;">
+	<form id="updateSiteForm" method="post">
+		<table width="100%" cellpadding="5">
+			<input type="hidden" name="_method" value="PUT" />
+			<input type="hidden" id="idUpdate" name="id">
+			<input type="hidden" id="orgIdUpdate" name="orgId">
+			<input type="hidden" id="superCodeUpdate" name="superCode">
+			<input type="hidden" id="modifyUserUpdate" name="modifyUser">
+			<tr>
+				<td align="right">用户名: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input required="true" id="userNameUpdate" name="userName" maxLength="10"
+					class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td align="right">登录名: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input id="loginNameUpdate" name="loginName" required="true" maxLength="20"
+					class="easyui-validatebox""/></td>
+			</tr>
+			<tr>
+				<td align="right">密 码: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input required="true" class="easyui-validatebox"
+					validType="minLength[6]" invalidMessage="至少6位字符" id="passwordUpdate"
+					name="password" type="password" class="txt03" /></td>
+			</tr>
+			<tr>
+				<td align="right">手 机: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input id="mobileUpdate" name="mobile" class="easyui-validatebox"
+					validType="telcheck" /></td>
+			</tr>
+			<tr>
+				<td align="right">邮件地址: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input class="easyui-validatebox" validType="email"
+					name="email" id="emailUpdate" /></td>
+			</tr>
+			<tr>
+				<td align="right">用户类型: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<select id="systemCodeUpdate" name="systemCode" class="easyui-combobox" required="true" style="width:173px;">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">组织机构: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<select id="orgUpdate" class="easyui-combotree" style="width:173px;">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><a href="javascript:void(0)"
+					class="easyui-linkbutton" onclick="userInfo.update();">提交</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton"
+					onclick="$('#updateSite').dialog('close');return false; ">取消</a></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<div id="loginSite" class="easyui-dialog" closed="true" title="同步用户登陆"
+	modal="true" style="width: 400px; padding: 15px;">
+	<form id="loginSiteForm" method="post">
+		<table width="100%" cellpadding="5">
+			<tr>
+				<td>登录名:</td>
+				<td><input name="loginName" class="easyui-validatebox"
+					id="up_login_name" required="true" /></td>
+			</tr>
+			<tr>
+				<td>密 码: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><input id="txtPassword" name="password" type="password"
+					class="txt03" /></td>
+			</tr>
+			<td align="center" colspan="2"><a href="javascript:void(0)"
+				class="easyui-linkbutton" onclick="userInfo.syncUser();">提交</a> <a
+				href="javascript:void(0)" class="easyui-linkbutton"
+				onclick="$('#loginSite').dialog('close');return false; ">取消</a></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script>
+	$.extend($.fn.validatebox.defaults.rules, {
+		minLength : {
+			validator : function(value, param) {
+				return value.length >= param[0];
+			},
+			message : '请输入至少个字符.'
+		},
+		telcheck : {
+			validator : function(value) {
+				return /^(13|15|18)\d{9}$/i.test(value);
+			},
+			message : "电话号码不正确"
+		}
+	});
+</script>
+<script type="text/javascript"
+	src="/admin/js/rom/permission/StuUser.js"></script>
+
+<!--#include virtual="/admin/inc/end.shtml"-->

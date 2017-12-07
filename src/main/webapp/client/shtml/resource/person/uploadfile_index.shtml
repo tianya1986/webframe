@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+           	101教育社区
+        </title>
+<!--#include virtual="/client/global-inc/admin/head.inc"-->
+<script type="text/javascript" src="/client/cache/js/resource/person/uploadfile_index.js"></script>
+ </head>
+    <body>
+<div class="tool-bar">
+<a href="javascript:void(0)" onclick="uploadfile.upload();" class="easyui-linkbutton" iconCls="icon-add" plain="true">上传资源</a>	
+<a href="javascript:void(0)" id="add_folder_btn" onclick="uploadfile.addFolder();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增文件夹</a>	
+<a href="javascript:void(0)" onclick="uploadfile.moveFile();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">移动</a>
+<a href="javascript:void(0)" onclick="uploadfile.del();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+</div>
+
+<form action="#" id="query_form">
+<div  class="filter-bar">
+	<input type="hidden" name="folderId" id="sel_folderId" value="0"/>
+	<input type="hidden" name="folderOrFileType" value=""/>
+	<a style="cursor:hand;float: left;" href="#" onclick="uploadfile.getAll();">全部</a>
+	<div id="folder_list_div" style="cursor:hand;display:none;float: left;"></div>
+</div>
+</form>
+<br/>
+
+<div id="query_list_table"></div>
+        <form action="#" method="post" enctype="multipart/form-data" target="upload_file_frame" id="form" name="form" style="display:none;">
+    		<input type="text" id="typeId" name="typeId" value="0"/>
+    		<input type="text" id="folderId"  value="0"/>
+    		<input type="file" name="file" id="file" onchange="uploadfile.fileSubmit();"/>
+    	</form>
+    	<iframe id="upload_file_frame" name="upload_file_frame" style="display:none;"></iframe>
+    	
+    	
+    <div id="upload_file_cue_div" title="上传文件提示信息" data-options="iconCls:'icon-save',closed:false,modal:true,onBeforeClose:uploadfile.colseUploadFile" style="padding:0px;width:500px;height:500px;">
+	    <table width="400px;" border="0" id="upload_wait_cue_id">
+	   </table>
+	   <table>
+	   		<tr>
+				<td colspan="2" align="left">
+					<a onclick="uploadfile.upload();" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">继续上传</a>
+				</td>
+			</tr>
+	   </table>
+    </div>
+    
+    <div id="choose_folder_div" title="选择文件夹信息" data-options="iconCls:'icon-save',closed:false,modal:true" style="padding:0px;width:400px;height:500px;">
+	     <div>
+ 		<form id="createFolderForm" method="post">
+	 	<table width="100%" cellpadding="5">
+	 		<tr>
+	 			<td align="right">
+	 				文件夹名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="name"  maxLength="20" class="easyui-validatebox" id="addfolderName"/> 	 				
+	 			</td>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="uploadfile.saveAddFolder();">新增</a>  				
+	 			</td>
+	 		</tr>	 	
+	 		
+	 	</table>
+		</form>
+		<div>
+	   	<input type="button" value="保存" class="i-btn" style="margin-left: 15px;" onclick="uploadfile.saveMoveFile(1);"/>
+	   	<a href="#" onclick="uploadfile.saveMoveFile(0);">移出文件夹</a>
+	   </div>
+	   </div>
+	    <table width="400px;" height="430px;" border="0" id="folder_list_table">
+	   </table>
+	   
+	  
+	   
+    </div>
+    <div id="uploadProgress" class="easyui-dialog" closed="true" title="增加系统参数" modal="true"  
+ style="width:500px;padding: 15px;">
+ 	<div class="progress">
+        <div class="bar"></div >
+        <div class="percent">0%</div >
+    </div>
+        <div id="status"></div>
+ </div>
+    <div id="createSite" class="easyui-dialog" closed="true" title="增加系统参数" modal="true"  
+ style="width:500px;padding: 15px;">
+    <form action="" id="createSiteForm">
+    <input type="file" name="myfile[]" /><br>
+	    <table width="400px;" border="0">
+	    	<tr>
+	    		<td>
+	    		标题:
+	    		</td>
+	    		<td>
+	    		<input type="hidden" id="id" name="id"/>
+	    		<input type="text" id="fileName" size="45" name="fileName" class="easyui-validatebox" data-options="required:true"/>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		简介:
+	    		</td>
+	    		<td>
+	    		<textarea rows="3" cols="40" id="description" name="description"></textarea>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		年级:
+	    		</td>
+	    		<td>
+	    		
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		资源类型:
+	    		</td>
+	    		<td>
+	    			<!-- <select id="fileType" name="fileType">
+	    				<option value="1">课件</option>
+	    				<option value="2">试题</option>
+	    				<option value="3">教案</option>
+	    				<option value="4">视频</option>
+	    			</select> -->
+	    			    <input id="fileType" class="easyui-combobox" name="resource_fileType"
+   								 data-options="valueField:'id',textField:'name',url:'/client/fileType/getList.do'">
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		公开类型:
+	    		</td>
+	    		<td>
+	    			<input type="radio" name="openType" value="0" checked="checked" onchange="uploadfile.setPaidMsg(this);"/>私有文档
+	    			<input type="radio" name="openType" value="1" onchange="uploadfile.setPaidMsg(this);"/>普通文档
+	    			<input type="radio" name="openType" value="2" onchange="uploadfile.setPaidMsg(this);"/>付费文档
+	    		</td>
+	    	</tr>
+	    	<tr id="show_paid_msg" style="display:none;">
+ 	    		<td colspan="2">
+	    			￥<input type="text" id="paidAmount" name="paidAmount" class="easyui-numberbox" size="6" data-options="min:0,precision:2"/>未付费用户只能试看前
+	    			<input type="text" id="paidPages" name="paidPages" size="6" class="easyui-numberspinner" data-options="min:0"/>页
+	    		</td>
+	    	</tr>
+	   </table>
+	   <table>
+	   		<tr>
+				<td colspan="2" align="left">
+					<a onclick="uploadfile.update();" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+				</td>
+			</tr>
+	   </table>
+	   </form>
+    </div>
+    <div id="edit_file_msg_div" title="修改资源信息" data-options="iconCls:'icon-save',closed:false,modal:true" style="padding:0px;width:420px;height:400px;">
+    <form action="" id="updateSiteForm">
+	    <table width="400px;" border="0">
+	    	<tr>
+	    		<td>
+	    		标题:
+	    		</td>
+	    		<td>
+	    		<input type="hidden" id="id" name="id"/>
+	    		<input type="text" id="fileName" size="45" maxlength="50" name="fileName" class="easyui-validatebox" data-options="required:true"/>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		简介:
+	    		</td>
+	    		<td>
+	    		<textarea rows="3" cols="40" ma maxlength="200"  id="description" name="description"></textarea>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		年级:
+	    		</td>
+	    		<td>
+	    		<input class="easyui-combotree" name="classifyCode" data-options="url:'/client/classify/getAllListByTreeForCode.do',method:'get',required:true" style="width:200px;"/>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		资源类型:
+	    		</td>
+	    		<td>
+	    		<!-- 	<select id="fileType" name="fileType">
+	    				<option value="1">课件</option>
+	    				<option value="2">试题</option>
+	    				<option value="3">教案</option>
+	    				<option value="4">视频</option>
+	    			</select> -->
+	    		
+	    			<input class="easyui-combobox" name="fileType" data-options="valueField:'id',textField:'name',url:'/client/fileType/getList.do',method:'get',required:true" style="width:200px;"/>
+	    		
+	    			
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td>
+	    		公开类型:
+	    		</td>
+	    		<td>
+	    			<input type="radio" name="openType" value="0" checked="checked" onchange="uploadfile.setPaidMsg(this);"/>私有文档
+	    			<input type="radio" name="openType" value="1" onchange="uploadfile.setPaidMsg(this);"/>普通文档
+	    			<input type="radio" name="openType" value="2" onchange="uploadfile.setPaidMsg(this);"/>付费文档
+	    		</td>
+	    	</tr>
+	    	<tr id="show_paid_msg" style="display:none;">
+ 	    		<td colspan="2">
+	    			<input type="text" id="paidAmount" name="paidAmount" class="easyui-numberbox" size="6" data-options="min:0,precision:2"/>
+	    			<span id="money_symbo"></span>&nbsp;&nbsp;&nbsp;&nbsp;未付费用户只能试看前
+	    			<input type="text" id="paidPages" name="paidPages" size="6" class="easyui-numberspinner" data-options="min:0"/>页
+	    		</td>
+	    	</tr>
+	   </table>
+	   <table>
+	   		<tr>
+				<td colspan="2" align="left">
+					<a onclick="uploadfile.update();" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+				</td>
+			</tr>
+	   </table>
+	   </form>
+    </div>
+   
+    </body>
+</html>

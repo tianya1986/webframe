@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+           	资源首页
+        </title>
+        <!--#include virtual="/client/global-inc/admin/head.inc"-->
+        <script type="text/javascript" src="/client/cache/js/resource/center/user_attention_unit_home_page.js"></script>
+ </head>
+    <body style="width:980px;font: 12px/20px '微软雅黑', '宋体', Arial, sans-serif, Verdana, Tahoma;">
+
+	<div class="easyui-tabs" style="width:800px;height:800px;">
+    	<div title="我 关注 的 单元 " style="padding:10px;">
+    		<select id="select-list" onchange="userAttenUnit.getResource()">
+				<option value="0">-----请选择----</option>
+			</select>
+			
+		
+			<div id="resource_div_1">
+			
+			</div>
+    	</div>
+    	<div title="我关注 的 用户  " style="padding:10px;">
+    			<div id="user_resource_div"/>
+    	</div>
+    	</div>
+    	<script type="text/javascript">
+			userAttenUnit.getUserResource();
+		</script>
+    </body>
+</html>

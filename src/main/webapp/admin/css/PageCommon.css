@@ -1,0 +1,134 @@
+﻿/* CSS 重置 */ 
+table { border-collapse: collapse; border-spacing: 0; }
+ 
+body{ margin:3px; padding:0px; font-size:12px; }
+/*
+.paging{text-align:center; margin:10px 0px 0px 0px;}
+	.paging a{ display:inline-block; vertical-align:middle; margin:0 0px; padding:1px 4px; height:14px; border:1px solid #d2d2d2; background:url(images/page.gif) repeat-x; color:#434343}
+	.paging a:hover{ color:#96c427}
+	.paging a.stop{ background:#ececec; color:#999; cursor:default}
+	.paging .curpage { border:1px solid #aad83e; font-weight:700; color:#fff; background-position:0 -18px; margin:0 5px;}
+*/	
+.navPoint {CURSOR: pointer; background:url(images/showhide.png) no-repeat center; display:block; width:20px; height:20px;}
+ul li { list-style-type:none;}
+.TableList a,.operPanel a { text-decoration:underline;}
+.TableList th{ height:20px; padding:0px 5px; white-space:nowrap; cursor:pointer;}
+.TableList td{ line-height:150%; padding:5px;}
+.TableList {margin-bottom: 0px;}
+.TableForm th{ height:20px; }
+.ttextarea{ height:100px; width:400px; overflow:auto; }
+.btn{text-align:center;}
+.clear{clear:both;}
+.tdr{ text-align:right;}
+
+.tdicon{width:45px;}
+.tdsoftname{width:120px;}
+.tdpackage{width:200px;}
+.tdtime{width:120px;}
+.tddeveloper{width:120px;}
+.tdlanguage{width:60px;}
+.tdcategory{width:100px;}
+.tdnum{width:80px;}
+.tdstatus{width:70px;}
+.tdoper{width:120px;}
+.tdcheck{width:40px; text-align:center;}
+.tdip{width:120px;}
+
+.pagesize,.pageorder{ padding:3px 5px 3px 5px; display:inline-block;}
+.pagesize.selected,.pageorder.selected{ background:#5494B2;}
+.sort{ background:url(images/sortImgs.gif) no-repeat right -30px;}
+/*加载中*/
+.loading{ position:absolute; top:0px; right:0px; height:42px; background:url(/Theme/Default/Images/loading36.gif) left center no-repeat #FFFFE1; padding:20px 0px 0px 50px; font-size:14px; border:1px solid #E3B695; font-weight:bold; }
+.verfied{ font-size:14px;color:#F78400; background:url(images/v.jpg) no-repeat left 60%; padding:5px;}
+
+.divBody { width: 100%; height: 100%; overflow:hidden;}
+.divSearchList { }
+.divOperation { width:100%; padding-bottom:6px;}
+.divOrder { width:100%; padding-bottom:6px;}
+.divDataHead { overflow-x: hidden; width:100%; padding-top:6px; clear: both;}
+.divDragDataHead { float: left; overflow-x: hidden;}
+.divDragDataHead table {  table-layout: fixed; float:left;}
+.divDataList { overflow-x: hidden; overflow-y:hidden; width:100%; vertical-align:top; clear: both;}
+.divDragDataList { overflow-x: hidden; overflow-y:auto; vertical-align:top; float: left; overflow-x: hidden; overflow-y: auto;}
+.divDragDataList table {table-layout: fixed;float: left;}
+.divDataXScroll {overflow-x: auto; overflow-y:hidden; clear: both; white-space: nowrap;}
+.divDragDataXScroll {height: 16px; overflow-x: auto; overflow-y: hidden; margin-left: 0px; }
+.spanRight {background:url(images/right.png) no-repeat 0px 0px; width:15px; height:15px; padding-left:15px;}
+.spanWrong {background:url(images/wrong.png) no-repeat 0px 0px; width:15px; height:15px; padding-left:15px;padding-bottom: 3px;padding-top: 1px;}
+#divSearchUpDown {position: absolute; top:90px;}
+.divIconUpDown {background: url(/Theme/Default/Images/line.png) repeat-x left top; width:200px;}
+.divBtnList {overflow:hidden; width:130px;}
+.divBtnBody {height:40px; width:104px; float:left; overflow:hidden; line-height:20px;}
+.divBtnBody a {color: #09588C; text-decoration:underline;}
+.divBtnBody a:hover {color: #4261A1; text-decoration:underline;}
+.divBtnMore {width:15px; height:20px; float:left; margin-top:4px;}
+.divBtnMoreAdd {background: url(/Theme/Default/Images/icon_add.png) no-repeat; width:13px; height:13px; cursor:pointer;}
+.divBtnMoreSub {background: url(/Theme/Default/Images/icon_sub.png) no-repeat; width:13px; height:13px; cursor:pointer;}
+.divIconBtn {width: 45px;height: 14px;background-position: -95px -167px;overflow: hidden;margin: 0px auto;cursor: pointer;}
+.divIconBtn:hover {background-position: -95px -191px;}
+.divIconBg {background-image: url(/Theme/Default/Images/icon.png);background-repeat: no-repeat;}
+.divIconUp {width: 12px;height: 7px;background-position: -97px -215px;overflow: hidden;margin: 3px auto;}
+.divIconDown {width: 12px;height: 7px;background-position: -116px -215px;overflow: hidden;margin: 3px auto;}
+.trSearchMore {display: none;}
+.tblHead {overflow: hidden;height: 1px;}
+.star {
+    color:red;
+}
+.tblColInfo {
+    margin-bottom: 0px;
+    border-collapse: collapse;
+    border: solid 1px #C7C7C7;
+    border-top: 1px;
+    font-size: 12px;
+}
+.tblColInfo th{
+    height: 25px;
+    padding: 0px;
+    font-weight:bold;
+    color: black;
+    border: solid 1px #C7C7C7;
+    border-bottom: 0px;
+    vertical-align: middle;
+    padding:0px 5px;
+    background-color:#F1F1F1;
+}
+.tblColInfo td{
+    border-bottom: solid 1px #F8F8F8;
+    border-collapse: collapse;
+    border: solid 1px #C7C7C7;
+    padding: 5px;
+}
+.divColInfo {
+    position: absolute;
+    background-color: #F8F8F8;
+    right: 25px;
+    top: 10px;
+    z-index: 1000;
+    font-size: 12px;
+    padding: 0px;
+    display: none;
+}
+.divColInfo table{
+   
+}
+.divColInfo table td{
+   width:160px;
+}
+
+.show_thumbnail_item { 
+	position: relative; 
+}
+
+.pic_show_tooltip { 
+	display: none; 
+	position: absolute; 
+}
+ 
+.pic_show_tooltip span.overlay { 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	display: block; 
+	width: 350px; 
+	height: 200px;
+}

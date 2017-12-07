@@ -1,0 +1,43 @@
+*{ margin:0; padding:0;}
+body{ margin:0px; padding:0px; font:12px "微软雅黑",Verdana, Geneva, sans-serif; color:#362e2b; background-color:#eaeef5;}
+div, form, img, ul, ol, li, dl, dt, dd { border:0px; }
+input,select,button,textarea { font-size:12px; line-height:16px; vertical-align:middle; outline:none; }
+textarea { resize:none; }
+ul, ol { list-style-type:none; }
+a{ text-decoration:none;}
+
+
+/*------header--------------------------*/
+.header{ width:100%; height:60px; padding-bottom:5px; position:relative; background:url(../images/index/header_bg.png) 0 bottom repeat-x; }
+p{ float:right; color:#505050; padding:5px 10px;}
+p a { color:#505050;}
+p em { font-style:normal; margin:0 5px; color:#B2E1FC;}
+.logo{ width:290px; height:54px; padding-left:15px; }
+.logo img { padding-top:8px; }
+.hlink { position:absolute; right:0; top:37px; width:300px; height:28px; line-height:28px; padding:0 10px 0 15px; background:url(../images/index/hlink_bg.png) 0 0 no-repeat; }
+.hlink li { float:left; color:#fff; margin-left:19px; *margin-left:16px; display:inline; }
+.hlink li a { float:left; color:#fff; }
+.icon { float:left; margin:6px 5px 0 0; display:inline; }
+.mes { position:relative; }
+.icon1 { margin-top:9px; }
+.mes ul { position:absolute; top:27px; left:19px; width:100px; border:1px solid #CAE1F1; background-color:#fff; display:none; }
+.mes ul li { width:100%; height:24px; line-height:24px; margin-left:0; }
+.mes ul li a { width:80px; color:#000; padding:0 10px; display:block; }
+.mes ul li a:hover { background-color:#EFF5FE; }
+.mes_num { color:#cc0000; }
+
+
+/*-----------------------*/
+.tab-content{ padding:2px 3px 2px 2px;}
+
+.panelbar{ border-top:1px solid #CAE1F1; border-left:1px solid #CAE1F1; border-right:1px solid #CAE1F1; background:url(../images/index/action-bg.png) repeat-x; height:23px; line-height:23px; padding-left:8px;}
+.panelbar a{ margin-right:15px; font-size:13px; color:#333; line-height:22px;}
+.panelbar a img{ vertical-align:middle; line-height:23px; margin:0 5px 5px 0; display:inline; }
+.searchbar{ clear:both; line-height:20px; padding:2px 0; border-top:1px solid #CAE1F1; border-left:1px solid #CAE1F1; border-right:1px solid #CAE1F1; background:#eff5fe; overflow:hidden; }
+.searchbar label{ float:left; margin:0 5px;}
+.input-text{ width:260px; padding:2px 3px; border:1px solid #dcdcdc; margin-bottom:1px; vertical-align:middle;}
+.om_text { width:117px; }
+.om_select { width:123px; height:23px; padding:2px 3px; }
+.searchbtn{ width:53px; height:24px; border:none; margin-top:4px; display:inline; background:url(../images/index/searchbtn.png) no-repeat; vertical-align:middle; line-height:21px; cursor:pointer;}
+
+

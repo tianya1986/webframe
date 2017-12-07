@@ -1,0 +1,273 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<div class="tool-bar" style="display: none">
+ <a href="javascript:void(0)" onclick='serviceApplyInfo.openCreate();return false;' class="easyui-linkbutton" iconCls="icon-add" plain="true">申请服务</a>	
+</div>
+
+<form action="#" id="query_form">
+<div  class="filter-bar" >
+	<table>
+	<tr>
+		<th>应用名称：</th>
+		<td><input type="text" class="i-txt" name="appName"  id="appName" /></td>
+		<th>应用状态：</th>
+		<td><select class="" name="status" id="status">	
+				<option value="">
+					全部
+				</option>	
+				<option value="0">
+					停止
+				</option>
+				<option value="1">
+					启动
+				</option>
+			</select>
+		</td>
+		<th>服务容器类型：</th>
+			<td>
+				<select class="" name="serviceType" id="serviceType">
+					<option value="">
+						全部
+					</option>
+					<option value="1">
+						tomcat
+					</option>
+					<option value="2">
+						jboss
+					</option>
+					<option value="3">
+						resin
+					</option>
+				</select>
+			</td>
+		<th>内外网：</th>
+			<td>
+				<select class="" name="outernet" id="outernet">
+					<option value="">
+						全部
+					</option>
+					<option value="0">
+						内网
+					</option>
+					<option value="1">
+						外网
+					</option>
+				</select>
+			</td>
+			<th>部署环境类型：</th>
+			<td>
+				<select class="" name="deployType" id="deployType">
+					<option value="">
+						全部
+					</option>
+					<option value="1">
+						开发环境
+					</option>
+					<option value="2">
+						测试环境
+					</option>
+					<option value="7">
+						预生产环境
+					</option>
+					<option value="8">
+						生产环境
+					</option>
+				</select>
+			</td>
+		
+		
+		
+		<td>
+			<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="serviceApplyInfo.search()"/>
+		 	<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="serviceApplyInfo.reSearch();"/>
+		</td>
+	</tr>
+	</table>
+	<br/>
+</div>
+</form>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/serviceApplyInfo',pagination:true,method:'GET',toolbar:'#siteTb'">
+     <thead>
+         <tr>       	 
+          	 <th data-options="field:'name',width:80">应用名称</th>
+             <th data-options="field:'service_type',width:50,formatter: function(value,row,index){
+				if (value==1){
+					return 'Java-tomcat';
+				} else if (value==2){
+					return 'Java_Jboos';
+				}
+			}">环境类型</th>   
+			<th data-options="field:'outernet',width:50,formatter: function(value,row,index){
+				if (value==0){
+					return '内网';
+				} else if (value==1){
+					return '外网';
+				}
+			}">内外网</th>   
+			<th data-options="field:'env',width:40,formatter: function(value,row,index){
+				if (value==1){
+					return '开发环境';
+				} else if (value==2){
+					return '测试环境';
+				}else if (value==7){
+					return '预生产环境';
+				}else if (value==8){
+					return '生产环境';
+				}
+				
+			}">发布环境</th>     
+			 <th data-options="field:'grayType',width:30,formatter: function(value,row,index){
+				if (value==0){
+					return 'A';
+				} else if (value==1){
+					return 'B';
+				}
+				
+			}">AB</th> 
+             <th data-options="field:'create_at',width:100,formatter:common.getTime">创建时间</th>
+             <th data-options="field:'status',width:100,formatter: function(value,row,index){
+				if (value==0){
+					return '停止 ';
+				} else if (value==1){
+					return '启动';
+				}
+			}">状态</th>
+             <th data-options="field:'server_ip',width:80">服务IP</th>
+              <th data-options="field:'domain',width:200,formatter: function(value,row,index){			
+					return '<a href=\'http://'+value+'\'>'+value+'</a>';
+				}">域名</th>
+              <th data-options="field:'port',width:50">端口</th>
+             <th data-options="field:'userName',width:50">创建人 </th>
+             <th data-options="field:'domains',width:100">扩展域名</th>
+            
+             <th data-options="field:'id',width:50,align:'center',formatter:serviceApplyInfo.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+
+<div id="createSite" class="easyui-dialog" closed="true" title="增加会员等级" modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="createSiteForm" method="post" enctype="multipart/form-data" target="upload_file_frame" >
+	 	<table width="100%" cellpadding="5"> 		
+	 		<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="appName"  maxLength="20" class="easyui-validatebox" id="_appName"/>  				
+	 			</td>
+	 		</tr>	    		    
+	 		<tr>
+	 			<td align="right">
+	 				域名: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td> 			 	 
+	 			 	 <textarea rows="5" cols="20" required="true"  name="domain" id="domain" maxLength="100" class="easyui-validatebox"  ></textarea>	 					 				
+	 			</td>
+	 		</tr>	    
+	 		
+	 		<tr>
+	 		<td>服务容器类型：</td>
+			<td>
+				<select class="" name="serviceType" id="serviceType" style="wdith:120">
+					<option value="">
+						全部
+					</option>
+					<option value="1">
+						tomcat
+					</option>
+					<option value="2">
+						jboss
+					</option>
+					<option value="3">
+						resin
+					</option>
+				</select>
+			</td>
+			</tr>
+	 		<tr><td>内外网: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>
+				<select class="" name="outernet" id="outernet">
+					<option value="">
+						全部
+					</option>
+					<option value="0">
+						内网
+					</option>
+					<option value="1">
+						外网
+					</option>
+				</select>
+			</td>
+			</tr>
+			<tr>
+			<td>部署环境类型：</td>
+			<td>
+				<select class="" name="deployType" id="deployType">
+					<option value="">
+						全部
+					</option>
+					<option value="1">
+						开发环境
+					</option>
+					<option value="2">
+						测试环境
+					</option>
+					<option value="7">
+						预生产环境
+					</option>
+					<option value="8">
+						生产环境
+					</option>
+				</select>
+			</td>
+			</tr>
+		<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="serviceApplyInfo.save();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#createSite').dialog('close');return false; ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div> 
+
+<div id="updateSite" class="easyui-dialog" closed="true" title="修改系统用户" modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="updateSiteForm" method="post">
+ 			<input type="hidden" name="_method" value="PUT"/>  
+ 			<input type="hidden" id="up_id" name="id">
+ 			<table width="100%" cellpadding="5"> 		
+	 		<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="appName"  maxLength="20" class="easyui-validatebox" id="_appName"/>  				
+	 			</td>
+	 		</tr>	    	
+	 		<tr>
+	 			<td align="right">
+	 				域名: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td> 			 	 
+	 			 	 <textarea rows="5" cols="20" required="true"  name="domain" id="domain" maxLength="100" class="easyui-validatebox"  ></textarea>	 					 				
+	 			</td>
+	 		</tr>
+	 	
+	 		<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="serviceApplyInfo.update();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#updateSite').dialog('close'); ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div>
+<script type="text/javascript" src="/admin/js/serviceapplyinfo/serviceapplyinfo.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/serviceApplyInfo',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<!--#include virtual="/admin/inc/end.shtml"-->

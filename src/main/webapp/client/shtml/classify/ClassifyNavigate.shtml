@@ -1,0 +1,189 @@
+<!--#include virtual="/admin/inc/head.inc"-->
+
+  <link rel="stylesheet" type="text/css" href="http://static.wenku.bdimg.com/static/common/pkg/pkg_newcomm_mvp_3057ee86.css" />
+<link rel="stylesheet" type="text/css" href="http://static.wenku.bdimg.com/static/zone/pkg/module_all_ec9b279c.css" />
+<link rel="stylesheet" type="text/css" href="http://static.wenku.bdimg.com/static/widget/zone/sidebar-widescreen/sidebar-widescreen_33768edb.css" />
+<link rel="stylesheet" type="text/css" href="http://static.wenku.bdimg.com/static/zone/edu/sync_learn/sync_learn_9ded70b5.css" />
+
+  <div id="hd">
+<div class="nav-wrap mb10"> 
+<div class="ui-nav">
+<div class="inner clearfix"> 
+	<ul class="clearfix main-nav" alog-group="general.nav"> 
+	<li id="nav-index"><a href="/" >首页</a>
+	</li> 
+	<li id="zone-menu">
+	<a href="javascript:void(0);">分类</a>
+	<b class="d-ic"></b></li>
+	</ul> 
+	<ul class="side-nav clearfix"> 
+	<li class="last"><a href="/client/shtml/resource/person/uploadfile_index.shtml"  id="nav-myWenku" class="logSend" ><b class="n-ic mywk-ic"></b>我的资源</a></li> </ul> 
+	 
+ 
+ <div id="wk-all-cate" data-options="/admin/classify/getListByTree.do"> 
+
+ <!-- <dl>
+	<dt>
+		<b class="t-tag cg"></b>
+		<a href="/portal/browse/zoneedu" target="_blank">教育频道<b class="li-aw n-ic"></b></a>
+	</dt>
+	<dd>
+		<a href="/portal/subject/8_s0_g0_v0" target="_blank">小学教育</a>
+		<a href="/portal/subject/9_s0_g0_v0" target="_blank">初中教育</a>
+		<a href="/portal/subject/31_s0_g0_v0" target="_blank">高中教育</a>
+	</dd>
+</dl>  -->
+ </div> </div> </div> </div>
+   <div id="screen-area-container" class="clearfix" >
+   <div  id="select-area"></div>
+   
+   		<div class='sel-list'><dl><dt>学段 :</dt> <dd><ul id='sel-list-1'></ul> </dd> </dl> <dl></div></br>
+   		<div class='sel-list'><dl><dt>学科:</dt> <dd><ul id='sel-list-2'></ul> </dd> </dl> <dl></div></br>
+   		<div class='sel-list'><dl><dt>年级:</dt> <dd><ul id='sel-list-3'></ul> </dd> </dl> <dl></div></br>
+   		<div class='sel-list'><dl><dt>版本</dt> <dd><ul id='sel-list-4'></ul> </dd> </dl> <dl></div></br>
+   		 <div style="float: right;">
+   <li><a onclick="classifyTree.openCreate()"> 关注资源</a></li>
+   </div>
+   </div>
+   
+   
+   <div class="unit-area"> <div class="hd"> <h1>目录</h1>  
+   <a href="/portal/subject/8_s0_g0_v0" title="全部资源" target="_self"> 
+   <div class="all-docs-hd"> </div> </a>  
+   </div> <div class="bd" > 
+
+ 
+<ul class="unit-list mb20" id="unit-list"> 
+
+</ul>
+
+ </div> </div>  
+   
+   
+   <div class="sort-area" id="sync-sort-area">   <ul class="stype-list" id="file_type">  
+   
+<li>  </li> 
+</ul>  </div>
+
+<div id="createSite" class="easyui-dialog" closed="true" title="关注 " modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="createSiteForm" method="post">
+	 	<table width="100%" cellpadding="5">
+	 		<input type="hidden" id="userId" name="atten_userid" value="1"/>
+ 			<input type="hidden" id="classifyid" name="classifyid"/>		
+	 		<th>是否要关注资源</th>
+	 		<tr>
+	 			<td align="right">
+	 				<input type="radio" value="1"  name="isAttention"  checked="checked"/> 是的，我要关注
+	 			</td>
+	 			
+	 		</tr>
+	 		<tr>
+	 			<td>
+	 				<input type="checkbox" id="remindFlag" value="1"/>发送私信 </br>
+	 				<input type="checkbox" id="remindFlag" value="2"/> 发送邮件
+	 			</td>
+	 		</tr>
+	 		<tr>
+		 		<td align="right">
+	 				 <input type="radio" value="0"  name="isAttention"  /> &nbsp;&nbsp;&nbsp;&nbsp; 不，我不想关注
+	 			</td>
+	 	    </tr>
+	 		<tr>
+	 			<td align="center" >
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="classifyTree.save();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#createSite').dialog('close');return false; ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div> 
+
+<script type="text/javascript" src="/client/cache/js/classify/classifyNavigate.js"></script>
+<script>
+
+/* $(document).ready(
+  function (){
+	  classifyTree.loadMain();
+  }
+); */
+
+
+</script>
+<style type="text/css">
+  .selected
+		{ 
+		 	background: none repeat scroll 0% 0% #56C4A1;
+		}
+		
+		
+
+a{cursor:pointer }
+p.review-all-range{width:240px!important;}
+.pass-login-pop-form{ _text-align:left; }
+
+  #baidu-top-tip .close{
+      background:url(http://img.baidu.com/img/iknow/docshare/img/close_bg.png) no-repeat 0 -1px!important;
+  }
+
+.doc-info .doc-copr-warp .doc-copr-intro .doc-copr-text{
+    float:none!important;
+   overflow:hidden!important;
+   display:inline!important;
+}
+
+.bottom-topic .topic-docList-item .doc-value,
+.bottom-topic .topic-docList-item .doc-rate-count,
+.bottom-topic .topic-docList-item .doc-page-num{
+  display:none!important;
+}
+
+div#hd .top-search-box {
+    position : relative;
+}
+.reader-tools-bar-wrap .reader-download{
+ overflow:visible!important;
+}
+.reader-tools-bar-wrap .reader-download span{
+  top:-6px!important;
+  right:-90px!important;
+  height:35px!important;
+}
+#bd .content #tasks #owari li .joinbtn {
+background : url(http://img.baidu.com/img/iknow/docshare/img/taskover.png) no-repeat 0 0;
+}
+#contentWrap1 .featureClass{height:216px;}
+
+
+.aside .doc-info .ic-report, .aside .doc-info .ic-vip1, .aside .doc-info .ic-vip2, .aside .doc-info .ic-vip3 {
+_background-image: url("http://img.baidu.com/img/iknow/docshare/img/module_flashview_z06b23718.gif");
+}
+.doc-info .doc-copr-warp .doc-ownner-intro .doc-org-des{
+     text-overflow: ellipsis;
+     overflow:hidden;
+     white-space:nowrap;
+}
+#hd .page-banner{ background:none;}
+.rbc-pop .inner .hd h3{font-weight:normal!important;}
+.rg .page-banner,.bottom-search-box .page-banner{display:none;}
+.bottom-search-box #bottomSearchBox{ background: #FFF;}
+.rg #bottomSearchBox{ background: #e7f2f9;}
+.book-sales-count{display:none;}
+#book-reco .bd .list-wrap .main-list .sub-item .book-cover-default {height:125px!important;}
+.vip-info-area .info-body .act {float:none!important;}
+
+.halloween-dialog{display: none !important;}
+
+.upload-btn-wealth-tip{display: none !important;}
+.yuedu-sug .books-mod .content{_position:relative;_left:-3px;_margin-right:3px;_zoom:1;text-align:left;}
+.yuedu-sug .authors-mod .content{_position:relative;_left:-3px;_margin-right:3px;_zoom:1;text-align:left;}
+
+.pay-wait-jump{margin-top: 40px!important;}
+.cashier-wrap .msg-help-tips{margin-bottom:20px;}
+.book-tag .tag-item {font-size:14px;}
+
+#book-spark .countdown-tips-area .number-bg {color: #fff !important;}
+.clearfix li{width:80px;float:left;} 
+
+</style>
+<!--#include virtual="/admin/inc/end.inc"-->

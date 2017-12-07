@@ -1,0 +1,137 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<div class="tool-bar">
+ <a href="javascript:void(0)" onclick='sysConfig.openCreate();' class="easyui-linkbutton" iconCls="icon-add" plain="true">新增系统参数</a>	
+</div>
+<div  class="filter-bar" >
+	<table>
+	<tr>
+		<th>参数名称：</th>
+		<td>
+			<input type="text" class="i-txt" name="name"  id="name" />
+		</td>
+		<th>参数编码：</th>
+		<td>
+			<input type="text" class="i-txt" name="code"  id="code" />
+			<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="sysConfig.search()">
+		</td>
+		
+	</tr>
+	</table>
+</div>
+<input type="hidden" id="lastCode"/>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/sysConfig/getList.do',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+             <th data-options="field:'name',width:100">参数名称</th>
+             <th data-options="field:'code',width:100">参数编码</th>
+             <th data-options="field:'value',width:100">参数值</th>
+             <th data-options="field:'remark',width:200">备注</th>
+             <th data-options="field:'id',width:50,align:'center',formatter:sysConfig.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+
+<div id="createSite" class="easyui-dialog" closed="true" title="增加系统参数" modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="createSiteForm" method="post" >
+	 	<table width="100%" cellpadding="5">
+	 		<tr>
+	 			<td align="right">
+	 				参数名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="name"  maxLength="20" class="easyui-validatebox" id="name"/> 
+	 				
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				参数编码: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="code" required="true"   maxLength="40" class="easyui-validatebox" id="code0" class="code0" onblur="sysConfig.validCode(0);"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				参数值: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="value" required="true"   maxLength="60" class="easyui-validatebox" id="value"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				备注: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="remark"   maxLength="40" class="easyui-validatebox" id="remark"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="sysConfig.save();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#createSite').dialog('close'); ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div> 
+
+<div id="updateSite" class="easyui-dialog" closed="true" title="修改系统参数" modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="updateSiteForm" method="post" >
+ 		<table>
+ 		<input type="hidden" id="id" name="id">
+	 	<table width="100%" cellpadding="5">
+	 		<tr>
+	 			<td align="right">
+	 				参数名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="name"  maxLength="20" class="easyui-validatebox" id="name"/> 
+	 				
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				参数编码: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="code" required="true"   maxLength="40" class="easyui-validatebox" id="code1" class="code1"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				参数值: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="value" required="true"   maxLength="60" class="easyui-validatebox" id="value"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right">
+	 				备注: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+		 			<input name="remark"   maxLength="40" class="easyui-validatebox" id="remark"/> 
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="sysConfig.update();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#updateSite').dialog('close'); ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+		</table>
+	</form>
+</div>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/sysConfig/getList.do',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<script type="text/javascript" src="/admin/js/system/sysConfig.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<!--#include virtual="/admin/inc/end.shtml"-->

@@ -1,0 +1,26 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<input type="hidden" id="lastCode"/>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/threadpool/getList',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+             <th data-options="field:'ip',width:100">任务IP</th>
+             <th data-options="field:'corePoolSize',width:100">最少线程数量</th>
+             <th data-options="field:'maxPoolSize',width:100">最大线程数量</th>
+             <th data-options="field:'keepAliveTime',width:100">线程允许空闲时间</th>
+             <th data-options="field:'queeSize',width:100">缓冲队列大小</th>
+             <th data-options="field:'poolSize',width:100">开启线程数</th>
+             <th data-options="field:'activeCounnt',width:100">正执行线程数</th>
+             <th data-options="field:'completedTaskCount',width:100">已完任务总数</th>
+              <th data-options="field:'serverConCount',width:100">服务器间连接数</th>
+               <th data-options="field:'clientConCount',width:100">客户端连接数</th>
+         </tr>
+     </thead>
+</table>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/threadpool/getList',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<script type="text/javascript" src="/admin/js/thread/threadpool.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<!--#include virtual="/admin/inc/end.shtml"-->

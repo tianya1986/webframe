@@ -1,0 +1,34 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<form action="#" id="query_form">
+<div  class="filter-bar" >
+	<table>
+	<tr>
+		<th>操作描述：</th>
+		<td><input type="text" class="i-txt" name="description"  id="description" /></td>
+		<td>
+			<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="serviceManageLogs.search()"/>
+		 	<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="serviceManageLogs.reSearch();"/>
+		</td>
+	</table>
+	<br/>
+</div>
+</form>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/serviceManageLogs',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>       	 
+          	 <th data-options="field:'serviceName',width:100">应用名称</th>
+             <th data-options="field:'description',width:100">操作描述</th>	
+             <th data-options="field:'opratorName',width:100">操作人</th>	
+             <th data-options="field:'createTime',width:100,formatter:common.getTime">操作时间</th>           
+             <th data-options="field:'id',width:50,align:'center',formatter:serviceManageLogs.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+<script type="text/javascript" src="/admin/js/servicemanagelogs/servicemanagelogs.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/serviceManageLogs',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<!--#include virtual="/admin/inc/end.shtml"-->

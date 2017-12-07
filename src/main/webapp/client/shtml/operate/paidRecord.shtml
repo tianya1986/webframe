@@ -1,0 +1,14 @@
+<!--#include virtual="/admin/inc/head.inc"-->
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/client/operate/paidRecord/getPaidList.do',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+             <th data-options="field:'fileName',width:100">文件名称</th>
+             <th data-options="field:'paidAmount',width:100">售价</th>
+             <th data-options="field:'sellUserName',width:100">出售者</th>
+             <th data-options="field:'createDate',width:200">时间</th>
+         </tr>
+     </thead>
+</table>
+<!-- <script type="text/javascript" src="/client/cache/js/operate/paidRecord.js"></script> -->
+<!--#include virtual="/admin/inc/end.inc"-->

@@ -1,0 +1,6 @@
+<!--#include virtual="/admin/inc/head.inc"-->
+ </head>
+    <body>
+	$uploadFile.id
+    </body>
+</html>

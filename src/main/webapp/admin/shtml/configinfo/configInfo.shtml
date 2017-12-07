@@ -1,0 +1,116 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<div class="tool-bar">
+ <a href="javascript:void(0)" onclick='configInfo.openCreate();return false;' class="easyui-linkbutton" iconCls="icon-add" plain="true">申请服务</a>	
+</div>
+
+<form action="#" id="query_form">
+<div  class="filter-bar" >
+	<table>
+	<tr>
+		<th>应用名称：</th>
+		<td><input type="text" class="i-txt" name="gradeName"  id="gradeName" /></td>
+		<th>系统编号:</th>
+		<td>
+			<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="configInfo.search()"/>
+		 	<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="configInfo.reSearch();"/>
+		</td>
+	</tr>
+	</table>
+	<br/>
+</div>
+</form>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/configInfo',pagination:true,method:'GET',toolbar:'#siteTb'">
+     <thead>
+         <tr>       	 
+          	 <th data-options="field:'dataId',width:100">dataId</th>         
+             <th data-options="field:'groupId',width:100">组名</th>         
+             <th data-options="field:'id',width:50,align:'center',formatter:configInfo.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+
+<div id="createSite" class="easyui-dialog" closed="true" title="增加会员等级" modal="true"  
+ style="width:800px;padding: 15px;">  
+ 	<form id="createSiteForm" method="post" enctype="multipart/form-data" target="upload_file_frame" >
+	 	<table width="100%" cellpadding="5"> 		
+	 		<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="dataId"  maxLength="20" class="easyui-validatebox" id="_dataId"/>  				
+	 			</td>
+	 		</tr>	    	
+	    	<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="groupId"  maxLength="20" class="easyui-validatebox" id="_groupId"/>  				
+	 			</td>
+	 		</tr>	  
+	 		<tr>
+	 			<td align="right">
+	 				配置内容: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td> 			 	 
+	 			 	 <textarea rows="5" cols="20" required="true"  name="content" id="content" maxLength="100" class="easyui-validatebox"  ></textarea>	 					 				
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="configInfo.save();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#createSite').dialog('close');return false; ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div> 
+
+<div id="updateSite" class="easyui-dialog" closed="true" title="修改系统用户" modal="true"  
+ style="width:400px;padding: 15px;">  
+ 	<form id="updateSiteForm" method="post">
+ 			<input type="hidden" name="_method" value="PUT"/>  
+ 			<input type="hidden" id="up_id" name="id">
+ 			<table width="100%" cellpadding="5"> 		
+	 		<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="dataId"  maxLength="20" class="easyui-validatebox" id="_dataId"/>  				
+	 			</td>
+	 		</tr>	    	
+	    	<tr>
+	 			<td align="right">
+	 				应用名称: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td>
+	 				<input required="true" name="groupId"  maxLength="20" class="easyui-validatebox" id="_groupId"/>  				
+	 			</td>
+	 		</tr>	  
+	 		<tr>
+	 			<td align="right">
+	 				配置内容: &nbsp;&nbsp;&nbsp;&nbsp;
+	 			</td>
+	 			<td> 			 	 
+	 			 	 <textarea rows="5" cols="20" required="true"  name="content" id="content" maxLength="100" class="easyui-validatebox"  ></textarea>	 					 				
+	 			</td>
+	 		</tr>
+	 			<tr>
+	 			<td align="center" colspan="2">
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="configInfo.update();">提交</a>  
+					 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#updateSite').dialog('close'); ">取消</a>  
+	 			</td>
+	 		</tr>
+	 	</table>
+	</form>
+</div>
+<script type="text/javascript" src="/admin/js/ConfigInfo/ConfigInfo.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/configInfo',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<!--#include virtual="/admin/inc/end.shtml"-->

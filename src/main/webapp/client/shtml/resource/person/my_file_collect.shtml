@@ -1,0 +1,17 @@
+<!--#include virtual="/admin/inc/head.inc"-->
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="singleSelect:true,fitColumns:true,url:'/client/operate/rscollect/getList.do',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+             <th data-options="field:'fileName',width:100">文件名</th>
+             <th data-options="field:'paidAmount',width:100">价格</th>
+             <th data-options="field:'classifyName',width:100">分类</th>             
+             <th data-options="field:'createDate',width:200,formatter:function(value,row,index){  
+                         return new Date(value).toLocaleString();  
+                         }">修改时间</th>
+             <th data-options="field:'id',width:50,align:'center',formatter:my_file_collect.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+<script type="text/javascript" src="/client/cache/js/resource/person/my_file_collect.js"></script>
+<!--#include virtual="/admin/inc/end.inc"-->

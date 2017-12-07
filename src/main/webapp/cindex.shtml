@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="utf-8" />
+<title>101社区-话题中心（前端）</title>
+<link rel="stylesheet" type="text/css" href="/client/cache/css/login.css" />
+<script type="text/javascript" src="/client/cache/js/common/jquery-1.9.1.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/client/cache/js/clogin.js" charset="UTF-8"></script>
+</head>
+
+<body id="login-body">
+<div class="login-area">
+	<p>
+		<label for="username">用户名：</label>
+		<input type="text" class="i-txt" id="login_name" size="40" value="wuyjustb@163.com"/>
+	</p>
+	<p>
+		<label for="password">密　码：</label>
+		<input type="password" class="i-txt" id="password" size="40" value="11111111"/>
+	</p>
+	<p class="no-label"><input type="image" src="/admin/images/login-submit.png" onclick="clogin.sub()"/></p>
+	<div class="copyright">Copyright &copy; 2014 All rights reserved. 话题中心（前端）</div>
+</div>
+</body>
+</html>

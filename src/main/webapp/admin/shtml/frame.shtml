@@ -1,0 +1,124 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+        <script type="text/javascript" src="/admin/js/page/index2.js" charset="UTF-8"></script>     
+    </head>
+    <body class="easyui-layout">
+        <div region="north" border="true" class="cs-north">
+            <div class="cs-north-bg">
+                <div class="cs-north-logo">
+   			             消息通讯管理系统  
+                </div>
+                <ul class="ui-skin-nav">
+                    <li class="li-skinitem" title="gray">
+                        <span class="gray" rel="gray">
+                        </span>
+                    </li>
+                    <li class="li-skinitem" title="dark-hive">
+                        <span class="dark-hive" rel="black">
+                        </span>
+                    </li>
+                    <li class="li-skinitem" title="cupertino">
+                        <span class="cupertino" rel="blue">
+                        </span>
+                    </li>
+                  <a href="javascript:void(0);" src="/loginout.jsp?logout=true" class="cs-navi-tab">
+                        	退出 
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div region="west" border="true" split="true" title="&nbsp;" class="cs-west">
+            <div class="easyui-accordion" fit="true" border="false">
+            
+                <!-- <div title="服务资源基础信息">
+                    <a href="javascript:void(0);" src="/" class="cs-navi-tab">
+                  	服务所属地域
+                    </a>
+                    <br>
+                    <a href="javascript:void(0);" src="/" class="cs-navi-tab">
+                  	容器类型
+                    </a>
+                    <br>
+                    <a href="javascript:void(0);" src="/" class="cs-navi-tab">
+                  	开发语言
+                    </a>
+                    <br>
+                    <a href="javascript:void(0);" src="/" class="cs-navi-tab">
+                  	服务实例规格
+                    </a>
+                    <br>
+                </div> -->
+                <div title="消息通讯管理系统 ">  
+                  <a href="javascript:void(0);" src="/admin/shtml/manage/customer.shtml"  class="cs-navi-tab">
+                  			系统用户管理
+                    </a>
+        
+                    <br>    
+                    <a href="javascript:void(0);" src="/admin/shtml/permission/stuUser.shtml" class="cs-navi-tab">
+                  			系统用户管理
+                    </a>
+        
+                    <br>               
+                	<a href="javascript:void(0);" src="/admin/shtml/permission/stuOrg.shtml" class="cs-navi-tab">
+                  	用户组织
+                    </a> 
+                    <br>
+                    <a href="javascript:void(0);" src="/admin/shtml/thread/threadpool.shtml" class="cs-navi-tab">
+                  		线程池监控
+                    </a>
+                    <br>
+                </div>
+ 
+                <div title="系统配置">
+                   	<a href="javascript:void(0);" src="/admin/shtml/system/sysConfig.shtml" class="cs-navi-tab">
+                  		系统参数
+                    </a>
+                    <br>
+                   
+                </div> 
+            </div>
+        </div>
+        <div id="mainPanle" region="center" border="true" border="false">
+            <div id="tabs" class="easyui-tabs" fit="true" border="false">
+                <div title="Home">
+                    <div class="cs-home-remark">
+                        <h1>
+                                                                                     消息通讯系统后台管理1.0
+                        </h1>
+                        <br>
+                     		 欢迎页面...
+                        <br>
+                                   
+                        <br>
+                     		   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mm" class="easyui-menu cs-tab-menu">
+            <div id="mm-tabupdate">
+				刷新
+            </div>
+            <div class="menu-sep">
+            </div>
+            <div id="mm-tabclose">
+				关闭
+            </div>
+            <div id="mm-tabcloseother">
+				关闭其他
+            </div>
+            <div id="mm-tabcloseall">
+				关闭其他
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+var stuUser=null;
+$.ajax({
+	dataType:"json",
+	url:"/admin/stuUser/getSessionUser",
+	success :function(r){
+		stuUser=r;
+	}
+});
+</script>

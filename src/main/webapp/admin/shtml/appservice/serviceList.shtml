@@ -1,0 +1,128 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<form action="#" id="query_form">
+<div  class="filter-bar" >
+	<table>
+	<tr>
+		<th>应用名称：</th>
+		<td><input type="text" class="i-txt" name="appName"  id="appName" /></td>
+		<th>应用状态：</th>
+		<td><select class="" name="status" id="status">		
+				<option value="">
+					全部
+				</option>
+				<option value="0">
+					停止
+				</option>
+				<option value="1">
+					启动
+				</option>
+			</select>
+		</td>
+		<th>内外网：</th>
+			<td>
+				<select class="" name="outernet" id="outernet">
+					<option value="">
+						全部
+					</option>
+					<option value="0">
+						内网
+					</option>
+					<option value="1">
+						外网
+					</option>
+				</select>
+			</td>
+			<th>部署环境类型：</th>
+			<td>
+				<select class="" name="deployType" id="deployType">
+					<option value="">
+						全部
+					</option>
+					<option value="1">
+						开发环境
+					</option>
+					<option value="2">
+						测试环境
+					</option>
+					<option value="7">
+						预生产环境
+					</option>
+					<option value="8">
+						生产环境
+					</option>
+				</select>
+			</td>
+		<td>
+			<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="serviceApplyInfo.search()"/>
+			<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="serviceApplyInfo.reSearch();"/>
+		</td>
+	</tr>
+	</table>
+	<br/>
+</div>
+</form>
+<table id="site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/serviceApplyInfo',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>       	 
+          	 <th data-options="field:'name',width:150">应用名称</th>
+              <th data-options="field:'service_type',width:100,formatter: function(value,row,index){
+				if (value==1){
+					return 'Java-tomcat';
+				} else if (value==2){
+					return 'Java_Jboos';
+				}
+			}">环境类型</th>   
+			<th data-options="field:'outernet',width:50,formatter: function(value,row,index){
+				if (value==0){
+					return '内网';
+				} else if (value==1){
+					return '外网';
+				}
+			}">内外网</th>   
+			<th data-options="field:'env',width:50,formatter: function(value,row,index){
+				if (value==1){
+					return '开发环境';
+				} else if (value==2){
+					return '测试环境';
+				}else if (value==7){
+					return '预生产环境';
+				}else if (value==8){
+					return '生产环境';
+				}
+				
+			}">发布环境</th>  
+			
+			<th data-options="field:'grayType',width:30,formatter: function(value,row,index){
+				if (value==0){
+					return 'A';
+				} else if (value==1){
+					return 'B';
+				}
+				
+			}">AB</th>  
+             <th data-options="field:'create_at',width:100,formatter:common.getTime">创建时间</th>
+             <th data-options="field:'server_ip',width:100">服务IP</th>
+              <th data-options="field:'domain',width:200">域名</th>
+              <th data-options="field:'port',width:50">端口</th>
+             <th data-options="field:'status',width:50,formatter: function(value,row,index){
+				if (value==0){
+					return '停止 ';
+				} else if (value==1){
+					return '启动';
+				}
+			}">状态</th>
+             <th data-options="field:'userName',width:50">创建人 </th>
+            <th data-options="field:'domains',width:100">扩展域名</th>
+             <th data-options="field:'id',width:150,align:'center',formatter:serviceOperate.fmtOperate">操作</th>
+         </tr>
+     </thead>
+</table>
+<script type="text/javascript" src="/admin/js/serviceapplyinfo/serviceapplyinfo.js"></script>
+<script type="text/javascript" src="/admin/js/serviceapplyinfo/serviceOperate.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/serviceApplyInfo',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("site-datagrid").setAttribute("data-options",url);
+</script>
+<!--#include virtual="/admin/inc/end.shtml"-->

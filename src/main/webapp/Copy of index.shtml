@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="utf-8" />
+<title>消息通讯管理系统  </title>
+<link rel="stylesheet" href="/admin/css/assets/css/style.css">
+<script type="text/javascript" src="/admin/js/common/jquery-1.9.1.min.js" charset="UTF-8"></script>
+
+
+</head>
+<body>
+	
+	<div class="user">
+		<div class="user-header"><div class="Wrapper">
+				<br /><br />
+					<div align="center"><h3>消息通讯管理系统12332  </h3></div>
+			</div>
+		</div>
+		<div class="ToothCon">
+			<div class="tooth Rep_x"></div>
+			<div class="Wrapper">
+<form action="#">
+				<div>
+					<div align="center" style="padding-left: 20px">
+					        <table >
+					        <tr>
+					        <td><label for="loginName">用户：</label></td>
+							<td><input type="text"  style="height:24px" id="loginName" size="20" /></td>
+					        </tr>
+					        <tr>
+							<td><label for="password">密码：</label></td>
+							<td><input type="password"  style="height:24px" id="password" size="20" /></td>
+						     </tr>
+						   <!--  <tr>
+							<td><label for="password">记住我：</label></td>
+							<td><input type="checkbox" id="forever" size="20"  /></td>
+					        </tr> -->
+					        <tr>
+						<td colspan="2" align="center"><input type="button" style="height:40px;width:100px;" onclick="login.sub()" value="登录1"></input>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						</tr>
+						</table>
+					</div>
+				</div>
+</form>
+			</div>
+		</div>
+	
+	</div>
+	<div id="showmsg" class="lay-pop" style="display:none">
+		<div class="PopWrap">
+			<div class="Pop">
+				<div align="center" class="lay-alert"><p id="msgcontent"></p></div>
+				<p class="lay-actions"><a href="javascript:closeMsg();" class="CommBtn t_grey">关闭</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+function gobackpagefun(){
+	window.verifyexit.setExit(1);
+}
+</script>
+<script type="text/javascript" src="/admin/js/page/login.js" charset="UTF-8"></script>

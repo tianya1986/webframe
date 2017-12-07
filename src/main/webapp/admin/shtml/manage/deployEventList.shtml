@@ -1,0 +1,94 @@
+<!--#include virtual="/admin/inc/head.shtml"-->
+<form action="#" id="salt_query_form">
+<div  class="filter-bar" >
+	<table>
+		<tr>
+			<th>uuid：</th>
+			<td><input type="text" size="20"  class="i-txt" name="uuid"  id="uuid" /></td>
+			<th>主机：</th>
+			<td><input type="text" size="20"  class="i-txt" name="host"  id="host" /></td>
+			<th>备注：</th>
+			<td><input type="text" size="20"  class="i-txt" name="remark"  id="remark" /></td>
+			<th>状态：</th>
+			<td><select class="" name="status" id="status">
+				<option value="">
+					全部
+				</option>
+				<option value="0">
+					参数列表
+				</option>
+				<option value="1">
+					开始发布
+				</option>
+				<option value="2">
+					开始拉包
+				</option>
+				<option value="3">
+					下载完成
+				</option>
+				<option value="4">
+					tomcat启动完成
+				</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<th>起始创建时间：</th>
+			<td>
+				<input size="20"   name="starttime" id="starttime"
+					   class="txt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			</td>
+			<th>结束创建时间：</td>
+			<td>
+				<input size="20"   name="endtime" id="endtime"
+					   class="txt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			<th>ip：</th>
+			<td><input type="text" size="20"  class="i-txt" name="ip"  id="ip" /></td>
+		</tr>
+		<tr>
+			<th>起始调用salt时间：</th>
+			<td>
+				<input size="20"   name="currentstart" id="currentstart"
+					   class="txt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			</td>
+			<th>结束调用salt时间：</td>
+			<td>
+				<input size="20"   name="currentend" id="currentend"
+					   class="txt" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+			<th>端口：</th>
+			<td><input type="text" size="20"  class="i-txt" name="port"  id="port" /></td>
+
+			<td align="right">
+				<input type="button" value="检索" class="i-btn" style="margin-left: 15px;" onclick="deployEvent.search()"/>
+				<input type="button" value="重置" class="i-btn" style="margin-left: 15px;" onclick="deployEvent.reSearch();"/>
+			</td>
+		</tr>
+	</table>
+	<br/>
+</div>
+</form>
+<table id="salt-site-datagrid" class="easyui-datagrid" title="" 
+            data-options="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/deployEvent',pagination:true,toolbar:'#siteTb'">
+     <thead>
+         <tr>
+			 <th data-options="field:'uuid',width:70">uuid</th>
+			 <th data-options="field:'host',width:40">主机</th>
+			 <th data-options="field:'domain',width:40">域名</th>
+			 <th data-options="field:'opt_type',width:40">操作类型</th>
+			 <th data-options="field:'status',width:30">步骤</th>
+			 <th data-options="field:'isOk',width:30">状态</th>
+			 <th data-options="field:'remark',width:100">备注</th>
+			 <th data-options="field:'create_dt',width:50,formatter:common.getTime",>创建时间</th>
+             <!--<th data-options="field:'id',width:20,align:'center',formatter:deployEvent.fmtOperate">操作</th>-->
+         </tr>
+     </thead>
+</table>
+
+<script type="text/javascript" src="/admin/js/DeployEvent/DeployEvent.js"></script>
+<script type="text/javascript" src="/admin/js/common/common.js"></script>
+<script type="text/javascript" src="/admin/js/common/My97DatePicker/WdatePicker.js"></script>
+<script>
+url="rownumbers:true,singleSelect:true,fitColumns:true,url:'/admin/deployEvent',pagination:true,method:'GET',toolbar:'#siteTb'";
+document.getElementById("salt-site-datagrid").setAttribute("data-options",url);
+</script>
+<!--#include virtual="/admin/inc/end.shtml"-->

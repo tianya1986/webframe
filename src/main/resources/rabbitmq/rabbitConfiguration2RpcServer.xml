@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- <rabbit:connection-factory host="${rabbitmq.host}" username="${rabbitmq.username}" password="${rabbitmq.password}" port="${rabbitmq.port}" virtual-host="${rabbitmq.virtualhost}"
+                               id="connectionFactory"/>
+
+   <rabbit:template id="template" connection-factory="connectionFactory" reply-timeout="60000"
+                     exchange="elastic_call_exchange" routing-key="elastic_call_route" queue="elastic_call_queue"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <rabbit:queue id="elastic_call_queue" durable="true" auto-delete="false" exclusive="false"
+                  name="elastic_call_queue"/>
+
+    <rabbit:direct-exchange name="elastic_call_exchange" durable="true" auto-delete="false" id="elastic_call_exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="elastic_call_queue" key="elastic_call_route"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+-->
+    <bean id="listener"
+          class="org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
+        <property name="serviceInterface" value="com.nd.elasticweb.amqp.springamqp.IReceiveMsgService" />
+        <property name="service" ref="service" />
+        <property name="amqpTemplate" ref="call_template" />
+    </bean>
+
+    <bean id="service" class="com.nd.elasticweb.amqp.springamqp.ReceiveMsgService" />
+
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <rabbit:listener ref="listener" queue-names="elastic_call_queue" />
+    </rabbit:listener-container>
+</beans>

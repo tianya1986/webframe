@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<keys>
+		<key>
+			<id>prj</id>
+			<name>项目名称</name>
+			<value>后台管理</value>
+		</key>
+		<key>
+			<id>creater</id>
+			<name>创建人</name>
+			<value>huangjx</value>
+		</key>
+		<key>
+			<id>table</id>
+			<name>表</name>
+		</key>
+		
+		<key>
+			<id>pageDirectory</id>
+			<name>页面主目录路径</name>
+			<value>manage</value>
+		</key>		
+	   <key>
+	      <BeanList>  
+		      <BeanBody targetPackage="com.atvadmin.manage">
+		      	<id>bean</id>
+				<name>客户设备管理</name>
+				<value>Customer</value>
+		      </BeanBody>
+	      </BeanList>
+	      
+	   </key>   
+		
+		<key>
+			<id>javaTargetProject</id>
+			<name>java代码目标路径</name>
+			<value>src/main/java/</value>
+		</key>
+		
+		<key>
+			<id>jsTargetProject</id>
+			<name>js代码目标路径</name>
+			<value>src/main/webapp</value>
+		</key>
+		
+		
+		<key>
+			<id>IXXService.java.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>IXXService.java.ftl</name>
+			<value>service/IXXXService.java</value>
+		</key>
+		<key>
+			<id>XXService.java.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>XXService.java.ftl</name>
+			<value>service/impl/XXXService.java</value>
+		</key>
+		<key>
+			<id>XXController.java.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>XXController.java.ftl</name>
+			<value>ctrl/XXXController.java</value>
+		</key>
+		<key>
+			<id>XXApiController.java.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>XXApiController.java.ftl</name>
+			<value>api/XXXApiController.java</value>
+		</key>
+		<key>
+			<id>XXDao.java.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>XXDao.java.ftl</name>
+			<value>dao/XXXDao.java</value>
+		</key>
+		<key>
+			<id>XX.js.ftl</id>
+			<desc>生成文件所在文件夹</desc>
+			<name>XX.js.ftl</name>
+			<value>/admin/js/YYY/XXX/XXX.js</value>
+		</key>
+	</keys>
+</root>

@@ -1,0 +1,54 @@
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- classPathEntry:数据库的JDBC驱动 -->
+	<!-- <classPathEntry location="f:\mylib\mysql-connector-java-5.1.30.jar" 
+		/> -->
+	<classPathEntry
+		location="d:\mylib\mysql-connector-java-5.1.18-bin.jar" />
+
+	<!--生成映射的类型，也可以生成ibatis的。具体参看mybatis-generator -->
+	<context id="DB2Tables3" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin"> 
+			<property name="searchString" value="Example$" /> <property name="replaceString" 
+			value="Entity" /> </plugin> -->
+		<!-- Pagination -->
+		<plugin type="PaginationPlugin"></plugin>
+		<!-- 去除自动生成的注释 -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://172.24.132.76:3301/cml_test" userId="root"
+			password="4b621f66f1b18e47">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--以下三个标签主要解析targetPackage和targetProject。其它的具体参看mybatis-generator -->
+		<!-- targetProject:自动生成代码的位置 -->
+		<javaModelGenerator targetPackage="com.atvadmin.manage.dto"
+			targetProject="src/main/java/">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.atvadmin.manage.dto"
+			targetProject="src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.atvadmin.manage.dto" targetProject="src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+		<!-- 去除Exampl的属性enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" -->
+		<table tableName="t_customer" domainObjectName="Customer"></table>
+		<!-- <table tableName="service_deploy_logs" domainObjectName="ServiceDeployLogs"></table> -->
+
+	</context>
+
+</generatorConfiguration> 
