@@ -1,0 +1,16 @@
+# 通信管理
+封装netty，并提供数据解析，接受，发送，缓存等。
+提供消息转发
+提供消息发送
+
+
+# 数据转发中心
+转发路由技术resfult
+如：/user/userinfo
+      /game/21point/start
+      /game/zhajinhua/start
+ 
+ # 请求过滤器filter
+ 拦截请求（权限验证）、装饰响应信息（加密）
+ 
+# 内部消息管理 Local message manager
