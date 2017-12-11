@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>netty解码器（一）</title>
+</head>
+<body>
+
+	<p>
+		Netty提供了丰富的解码器抽象基类。下面是解码器的类型：</br>
+		
+		* 解码字节到消息 </br>
+		* 解码消息到消息 </br>
+		解码器负责解码“入站”数据从一种格式到另一种格式，解码器是抽象ChannelInboundHandler实现的。</br>
+		实际使用中，将入站数据转换格式后，传到ChannelPipeline中的下一个ChannelInboundHandler进行处理。</br>
+	
+	</br>
+		<strong>ByteToMessageDecoder</strong></br>
+		Netty提供的ByteToMessageDecoder可以将字节消息解码成POJO对象。下面是ByteToMessageDecoder的两个主要方法</br>
+		<xmp>
+			* decode(ChannelHandlerContext, ByteBuf, List<Object>)//这个方法是唯一的一个需要自己实现的抽象方法，作用是将ByteBuf数据解码成其他形式的数据。
+	        *  decodeLast(ChannelHandlerContext, ByteBuf, List<Object>)//实际上调用的是decode(...)。</br>
+		</xmp>
+		<img alt="" src="../../resources/images/201712092035.png"></br>
+		上图显示了从入站ByteBuf读取bytes后，由ToIntegerDecoder进行编码，然后将解码后的消息存入List集合中，然后传递到ChannelPipeline的下一个ChannelInboundHandler处理。
+		看下ToIntegerDecoder代码</br>
+		<pre>
+		  /** 
+			 * Integer解码器,ByteToMessageDecoder实现 
+			 * 
+			 */  
+			public class ToIntegerDecoder extends ByteToMessageDecoder {  
+			    @Override  
+			    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {  
+			        //接收到字节大于4个字节了就处理。
+			        if(in.readableBytes() >= 4){  
+			            out.add(in.readInt());  
+			        }  
+			    }  
+			}
+		</pre>
+		
+		<strong>ReplayingDecoder</strong></br>
+		ReplayingDecoder是byte-to-message解码的一种特殊的抽象基类。</br>
+			
+		<strong>MessageToMessageDecoder</strong></br>
+		
+		将消息转成消息可以使用MessageToMessageDecoder。</br>
+		如下图</br>
+		<img alt="" src="../resources/images/2017120920338.png">
+		
+		</br>实现代码
+		<pre>
+		/**
+ * 将接收的Integer消息转成String类型，MessageToMessageDecoder实现
+ * @author c.k
+ *
+ */
+public class IntegerToStringDecoder extends MessageToMessageDecoder<Integer> {
+
+    @Override
+    protected void decode(ChannelHandlerContext ctx, Integer msg, List<Object> out) throws Exception {
+        out.add(String.valueOf(msg));
+    }
+}
+		</pre>
+		
+		</br>
+			
+			
+	</p>
+
+</body>
+</html>

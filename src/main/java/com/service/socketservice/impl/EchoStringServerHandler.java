@@ -48,7 +48,7 @@ public class EchoStringServerHandler extends ChannelInboundHandlerAdapter {
 	// private static HashMap<String,byte[]> map=new HashMap<String,byte[]>();
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+	    logger.info("Welcome!!! thread name:" + Thread.currentThread().getName());
 		logger.info("Welcome!!!" + ctx.channel().remoteAddress());
 		
 		clientlist.add(ctx);
