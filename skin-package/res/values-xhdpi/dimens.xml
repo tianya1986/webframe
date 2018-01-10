@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="general_rb_selected_bg_l_r_padding">-2px</dimen>
+
+    <dimen name="general_rb_selected_stroke">3px</dimen>
+</resources>

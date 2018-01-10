@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 为了能够修改主题的色系，并且能够方便子属性兼容各个系统版本，这里需要定义一些基类主题 -->
+    <!-- 全局主题的基类，主要用于继承API主题，便于换肤时修改色系 -->
+    <style name="Base.CommonBase.Theme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- 顶部状态栏底色 -->
+        <item name="colorPrimaryDark">@color/common_text_color_primary</item>
+        <!-- 主标题文字颜色 -->
+        <item name="android:textColorPrimary">@color/common_text_color_primary</item>
+        <!-- 副标题文字颜色 -->
+        <item name="android:textColorSecondary">@color/common_text_color_secondary</item>
+        <!-- 一些控件的色调 -->
+        <item name="colorAccent">@color/common_base_color_accent</item>
+        <!-- 屏幕背景色 -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <!-- 使用ActionBar的情况下，App标题栏的颜色，toolbar下要另外设置 -->
+        <item name="colorPrimary">@color/common_base_color_primary</item>
+        <!-- 按钮默认颜色 -->
+        <item name="colorButtonNormal">@color/general_button_bg_enable</item>
+        <!-- 按钮样式 -->
+        <item name="buttonStyle">@style/CommonBase.Style.Button</item>
+        <!-- 菜单按钮文字颜色（右侧按钮文字颜色） -->
+        <item name="actionMenuTextColor">@color/navigation_title_rt_txt_color</item>
+        <!-- 菜单按钮文字样式 -->
+        <item name="actionMenuTextAppearance">@style/CommonBase.Style.ActionMenuTextAppearance</item>
+        <!-- 虚拟物理按钮栏颜色，无特殊要求不开启 -->
+        <!--<item name="android:navigationBarColor" tools:targetApi="21">@color/color1</item>-->
+        <!-- checkbox样式 -->
+        <item name="checkboxStyle">@style/CommonBase.Style.CheckBox</item>
+        <item name="radioButtonStyle">@style/CommonBase.Style.RadioButton</item>
+
+        <item name="alertDialogTheme">@style/CommonBase.AlertDialogTheme</item>
+
+        <item name="svQueryBackground">@color/navigation_search_cursor_color</item>
+        <item name="svCloseIcon">@drawable/general_top_icon_search_close_normal</item>
+        <item name="svSearchIcon">@drawable/general_top_icon_search_smallsearch_normal</item>
+        <item name="svTextColor">@color/navigation_search_txt_color</item>
+        <item name="svTextHintColor">@color/navigation_search_color</item>
+        <item name="svTextCursorDrawable">@drawable/general_top_icon_search_cursor_drawable</item>
+        <item name="amTextColor">@color/navigation_title_rt_txt_color</item>
+
+        <item name="svLayout_Height">@dimen/common_top_searchview_height</item>
+    </style>
+
+    <!-- ActionBar 主题的基类，主要用于继承API主题，便于换肤时修改色系 -->
+    <style name="Base.CommonBase.Theme.ActionBar" parent="ThemeOverlay.AppCompat.Light">
+        <!-- 一些控件的色调，主要用于SearchView的光标颜色和背景色 -->
+        <item name="colorAccent">@color/navigation_search_cursor_color</item>
+        <!-- 输入框默认背景色、底图搜索图标颜色、删除按钮颜色等 -->
+        <item name="colorControlNormal">@color/navigation_search_bg_color</item>
+        <!-- 返回按钮图标 -->
+        <item name="navigationIcon">@drawable/general_top_icon_back_android</item>
+        <!-- 返回按钮图标 -->
+        <!--<item name="collapseIcon">@drawable/general_top_icon_back_android</item>-->
+        <!-- 返回按钮图标 -->
+        <item name="android:homeAsUpIndicator">@drawable/general_top_icon_back_android</item>
+        <!-- 主要定义SearchView 的输入颜色 -->
+        <item name="android:textColorPrimary">@color/navigation_search_txt_color</item>
+        <!-- 主要用于定义SearchView的默认提示文字颜色  -->
+        <item name="android:textColorHint">@color/navigation_search_color</item>
+        <!-- 主要用于设置SearchView的样式 -->
+        <item name="searchViewStyle">@style/CommonBase.Style.SearchViewStyle</item>
+
+        <item name="actionOverflowMenuStyle">@style/CommonBase.Style.OverflowMenu</item>
+        <item name="android:actionOverflowButtonStyle">
+            @style/CommonBase.Style.OverflowMenuButton
+        </item>
+
+        <item name="svQueryBackground">@color/navigation_search_cursor_color</item>
+        <item name="svCloseIcon">@drawable/general_top_icon_search_close_normal</item>
+        <item name="svSearchIcon">@drawable/general_top_icon_search_smallsearch_normal</item>
+        <item name="svTextColor">@color/navigation_search_txt_color</item>
+        <item name="svTextHintColor">@color/navigation_search_color</item>
+        <item name="svTextCursorDrawable">@drawable/general_top_icon_search_cursor_drawable</item>
+        <item name="amTextColor">@color/navigation_title_rt_txt_color</item>
+
+        <item name="svLayout_Height">@dimen/common_top_searchview_height</item>
+
+        <item name="autoCompleteTextViewStyle">@style/Base.CommonBase.Theme.SearchViewAutoComplete</item>
+    </style>
+
+    <style name="Base.CommonBase.Theme.SearchViewAutoComplete" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textCursorDrawable">@drawable/general_top_icon_search_cursor_drawable</item>
+        <item name="android:textColor">@color/navigation_search_txt_color</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- Popup 弹出框主题的基类，主要用于继承API主题，便于换肤时修改色系 -->
+    <style name="Base.CommonBase.Theme.Popup" parent="ThemeOverlay.AppCompat.Light">
+        <!-- 弹出框中标题文字颜色 -->
+        <item name="android:textColorPrimary">@color/common_text_color_primary</item>
+    </style>
+
+    <!-- Theme begin-->
+    <!-- 全局主题 -->
+    <style name="CommonBase.Theme" parent="@style/Base.CommonBase.Theme"/>
+
+    <!-- ActionBar样式 -->
+    <style name="CommonBase.Theme.ActionBar" parent="Base.CommonBase.Theme.ActionBar"/>
+
+    <!-- 弹出框样式 -->
+    <style name="CommonBase.Theme.Popup" parent="Base.CommonBase.Theme.Popup"/>
+
+    <!-- 红色按钮样式 -->
+    <style name="CommonBase.Theme.Button.Red" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/general_red_button_bg</item>
+        <item name="colorAccent">@color/general_red_button_bg</item>
+    </style>
+
+    <!-- 为了保证 AlertDialog 的 button 在高版本上存在按钮颜色的问题，单独增加一个对应的主题 -->
+    <style name="CommonBase.AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonStyle">@style/CommonBase.Style.AlertDialogButton</item>
+    </style>
+
+    <!-- Theme end-->
+
+</resources>

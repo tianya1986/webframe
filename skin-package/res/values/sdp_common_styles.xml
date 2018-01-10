@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="CommonBase"/>
+
+    <style name="CommonBase.Style"/>
+
+    <!--
+     OverflowMenu 下拉对话框基类样式
+     浅色系选用：@style/Widget.AppCompat.Light.PopupMenu.Overflow
+     深色系选用：@style/Widget.AppCompat.PopupMenu.Overflo
+     -->
+    <style name="Base.CommonBase.Style.OverflowMenu" parent="Widget.AppCompat.Light.PopupMenu.Overflow"/>
+
+    <style name="Base.CommonBase.Style.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/general_inset_button_bg_selector</item>
+        <item name="colorButtonNormal">@color/general_button_bg_enable</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:minHeight">0dip</item>
+        <item name="android:minWidth">0dip</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Style begin -->
+
+    <style name="CommonBase.Style.Button" parent="Base.CommonBase.Style.Button"/>
+
+    <!--<style name="CommonBase.Style.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">-->
+    <style name="CommonBase.Style.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/general_checkbox_icon</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">5dp</item>
+
+    </style>
+
+    <style name="CommonBase.Style.RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/general_radiobutton_icon</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingStart" tools:targetApi="jelly_bean_mr1">5dp</item>
+    </style>
+
+
+    <style name="CommonBase.Style.Button.Blue">
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_white_selector</item>
+    </style>
+
+    <style name="CommonBase.Style.Button.Red">
+        <item name="android:background">@drawable/general_inset_red_button_bg_selector</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_white_selector</item>
+    </style>
+
+    <style name="CommonBase.Style.Button.WhiteBlue">
+        <item name="android:background">@drawable/general_inset_white_button_bg_selector</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_blue_selector</item>
+    </style>
+
+    <style name="CommonBase.Style.Button.WhiteBlack">
+        <item name="android:background">@drawable/general_inset_white_button_bg_selector</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_black_selector</item>
+    </style>
+
+    <style name="CommonBase.Style.Button.HollowedGray">
+        <item name="android:background">@drawable/general_inset_hollowed_gray_button_bg_selector
+        </item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_blue_selector</item>
+    </style>
+
+    <style name="CommonBase.Style.Button.HollowedBlue">
+        <item name="android:background">@drawable/general_inset_hollowed_blue_button_bg_selector
+        </item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@drawable/general_button_text_blue_selector</item>
+    </style>
+
+    <!-- Toolbar的样式 -->
+    <style name="CommonBase.Style.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_toolbar_size</item>
+        <!-- 背景 -->
+        <item name="android:background">@drawable/general_navigation_title_bg</item>
+        <!-- 副标题文字样式 -->
+        <item name="subtitleTextAppearance">@style/CommonBase.Style.Toolbar.SubTitleText</item>
+        <!--标题左侧按钮（返回按钮） -->
+        <!--<item name="collapseIcon">@drawable/general_top_icon_back_android</item>-->
+        <!-- 主标题文字样式 -->
+        <item name="titleTextAppearance">@style/CommonBase.Style.Toolbar.TitleText</item>
+        <item name="android:minHeight">@dimen/common_toolbar_size</item>
+        <!-- 弹出菜单的样式 -->
+        <item name="popupTheme">@style/CommonBase.Theme.Popup</item>
+    </style>
+
+    <style name="CommonBase.Style.OverflowMenu" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="android:dropDownHorizontalOffset">-164dp</item>
+        <!-- 弹出菜单垂直间距 -->
+        <item name="android:dropDownVerticalOffset">5dip</item>
+    </style>
+
+    <!-- 菜单按钮的样式 -->
+    <style name="CommonBase.Style.OverflowMenuButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <!-- 菜单按钮的图标 -->
+        <item name="android:src">@drawable/general_top_icon_more</item>
+        <!-- 菜单按钮的图标 -->
+        <item name="android:icon">@drawable/general_top_icon_more</item>
+
+        <item name="android:textSize">?font_medium</item>
+    </style>
+
+    <!-- 主标题文字样式 -->
+    <style name="CommonBase.Style.Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <!-- 主标题文字大小 -->
+        <item name="android:textSize">18dp</item>
+        <!-- 主标题文字颜色-->
+        <item name="android:textColor">@color/navigation_title_main_color</item>
+    </style>
+
+    <!-- 副标题文字样式 -->
+    <style name="CommonBase.Style.Toolbar.SubTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <!-- 副标题文字大小 -->
+        <item name="android:textSize">14dp</item>
+        <!-- 副标题颜色 -->
+        <item name="android:textColor">@color/navigation_online_color</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget">
+    </style>
+
+    <style name="CommonBase.Style.Widget.TextView">
+    </style>
+
+    <style name="CommonBase.Style.Widget.TextView.SingleLine">
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.EditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/general_edittext_underlineColor</item>
+        <item name="colorControlActivated">@color/general_edittext_underlineColor</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.Divider">
+        <item name="android:background">@color/navigation_title_line_color</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.Divider.Horizantal.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/navigation_title_line_color_light</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.Divider.Horizantal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.Divider.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.SettingItem">
+        <item name="android:paddingLeft">@dimen/common_padding_horizantal</item>
+        <item name="android:paddingRight">@dimen/common_padding_horizantal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@drawable/bg_white_ripple</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.SettingItem.Text">
+        <item name="android:textColor">@color/general_setting_item_text_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/fontsize4</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.TextInSettingItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/general_setting_item_text_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/fontsize4</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.TextInSettingItem.Secondary">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/fontsize5</item>
+        <item name="android:textColor">@color/general_setting_item_secondary_text_color</item>
+    </style>
+
+    <style name="CommonBase.Style.Widget.Divider.Horizantal.SettingItem">
+        <item name="android:layout_marginLeft">@dimen/common_padding_horizantal</item>
+    </style>
+
+    <style name="CommonBase.Style.ActionMenuTextAppearance">
+        <item name="android:textSize">@dimen/navigation_title_rt_txt_size</item>
+        <item name="android:textColor">@color/navigation_title_rt_txt_color</item>
+    </style>
+
+    <style name="CommonBase.Style.SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@drawable/general_navigation_search_cursor_color</item>
+        <item name="closeIcon">@drawable/general_top_icon_search_close_normal</item>
+        <item name="searchIcon">@drawable/general_top_icon_search_smallsearch_normal</item>
+        <item name="searchHintIcon">@drawable/general_top_icon_search_smallsearch_normal</item>
+
+        <!--<item name="layout">@layout/abc_search_view</item>-->
+        <!--<item name="submitBackground">@drawable/abc_textfield_search_material</item>-->
+        <!--<item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>-->
+        <!--<item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>-->
+        <!--<item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>-->
+        <!--<item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line</item>-->
+    </style>
+
+    <style name="CommonBase.Style.ToolbarDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_toolbar_divider_height</item>
+        <item name="android:background">@color/navigation_title_line_color</item>
+    </style>
+
+
+    <style name="CommonBase.Style.Light.Spinner" parent="android:style/Widget.Holo.Light.Spinner">
+        <!--<item name="android:background">@drawable/ad_spinner_background_holo_light</item>-->
+        <!--<item name="android:popupBackground">@drawable/ad_menu_dropdown_panel_holo_light</item>-->
+        <!--<item name="android:dropDownSelector">@drawable/ad_selectable_background</item>-->
+    </style>
+
+    <style name="CommonBase.Style.SlidingTabLayout">
+        <item name="stlBottomBorderHeight">1dp</item>
+        <item name="stlDividerColor">@null</item>
+        <item name="stlDividerHeight">0</item>
+        <item name="stlDividerWidth">0dp</item>
+        <item name="stlSelectedIndicatorHeight">3dp</item>
+    </style>
+
+    <style name="CommonBase.Style.EmptyDataTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/general_empty_data_title_icon_space</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/fontsize5</item>
+        <item name="android:textColor">@color/general_empty_data_title</item>
+    </style>
+
+    <style name="CommonBase.Style.EmptyDataSubTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/common_margin_item_line_spacing</item>
+        <item name="android:textSize">@dimen/fontsize6</item>
+        <item name="android:textColor">@color/general_empty_data_subtitle</item>
+    </style>
+
+    <style name="CommonBase.Style.EmptyDataButton" parent="CommonBase.Style.Button.Blue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/general_empty_data_btn_height</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/fontsize5</item>
+        <item name="android:layout_marginTop">@dimen/general_empty_data_btn_margintop</item>
+        <item name="android:layout_marginLeft">@dimen/common_padding_horizantal</item>
+        <item name="android:layout_marginRight">@dimen/common_padding_horizantal</item>
+    </style>
+
+    <style name="CommonBase.Style.ListDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_list_divider_height</item>
+    </style>
+
+    <style name="CommonBase.Style.ListDivider.Light">
+        <item name="android:background">@color/general_list_divider_light</item>
+    </style>
+
+    <style name="CommonBase.Style.ListDivider.Dark">
+        <item name="android:background">@color/general_list_divider_dark</item>
+    </style>
+
+    <style name="CommonBase.Style.AlertDialogButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/common_base_color_accent</item>
+    </style>
+
+
+    <!-- Style end -->
+
+    <!-- font style begin -->
+    <style name="FontStyle">
+    </style>
+
+    <style name="FontStyle.Small">
+        <item name="font_xxsmall">8dp</item>
+        <item name="font_xsmall">10dp</item>
+        <item name="font_small">12dp</item>
+        <item name="font_medium">14dp</item>
+        <item name="font_large">16dp</item>
+        <item name="font_xlarge">18dp</item>
+        <item name="avatar_xsmall">32dp</item>
+        <item name="avatar_small">36dp</item>
+        <item name="avatar_size">42dp</item>
+    </style>
+
+    <style name="FontStyle.Medium">
+        <item name="font_xxsmall">10dp</item>
+        <item name="font_xsmall">12dp</item>
+        <item name="font_small">14dp</item>
+        <item name="font_medium">16dp</item>
+        <item name="font_large">18dp</item>
+        <item name="font_xlarge">20dp</item>
+        <item name="avatar_xsmall">36dp</item>
+        <item name="avatar_small">44dp</item>
+        <item name="avatar_size">50dp</item>
+    </style>
+
+    <style name="FontStyle.Large">
+        <item name="font_xxsmall">12dp</item>
+        <item name="font_xsmall">14dp</item>
+        <item name="font_small">16dp</item>
+        <item name="font_medium">18dp</item>
+        <item name="font_large">20dp</item>
+        <item name="font_xlarge">22dp</item>
+        <item name="avatar_xsmall">40dp</item>
+        <item name="avatar_small">52dp</item>
+        <item name="avatar_size">58dp</item>
+    </style>
+
+    <style name="FontStyle.XLarge">
+        <item name="font_xxsmall">14dp</item>
+        <item name="font_xsmall">16dp</item>
+        <item name="font_small">18dp</item>
+        <item name="font_medium">20dp</item>
+        <item name="font_large">22dp</item>
+        <item name="font_xlarge">24dp</item>
+        <item name="avatar_xsmall">44dp</item>
+        <item name="avatar_small">58dp</item>
+        <item name="avatar_size">64dp</item>
+    </style>
+
+    <style name="FontStyle.XXLarge">
+        <item name="font_xxsmall">16dp</item>
+        <item name="font_xsmall">18dp</item>
+        <item name="font_small">20dp</item>
+        <item name="font_medium">22dp</item>
+        <item name="font_large">24dp</item>
+        <item name="font_xlarge">26dp</item>
+        <item name="avatar_xsmall">48dp</item>
+        <item name="avatar_small">64dp</item>
+        <item name="avatar_size">72dp</item>
+    </style>
+    <!-- font style end -->
+
+
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_padding_horizantal">10dp</dimen>
+    <dimen name="common_padding_vertical">12dp</dimen>
+    <dimen name="common_padding_item">12dp</dimen>
+    <dimen name="common_margin_item_inline">12dp</dimen>
+    <dimen name="common_margin_item_line_spacing">8dp</dimen>
+    <dimen name="common_size_avatar">48dp</dimen>
+    <dimen name="common_margin_setting_item">22dp</dimen>
+    <dimen name="common_toolbar_size">50dp</dimen>
+    <dimen name="common_toolbar_divider_height">1px</dimen>
+    <dimen name="common_ptr_header_height">90dp</dimen>
+    <dimen name="common_ptr_start_top_margin">10dp</dimen>
+    <dimen name="common_ptr_wave_height">150dp</dimen>
+
+    <dimen name="navigation_title_rt_txt_size">@dimen/fontsize4</dimen>
+
+
+    <dimen name="common_top_searchview_height">40dp</dimen>
+
+
+    <dimen name="common_list_divider_height">1px</dimen>
+
+    <dimen name="general_empty_data_btn_height">42dp</dimen>
+    <dimen name="general_empty_data_btn_margintop">90dp</dimen>
+    <dimen name="general_empty_data_title_icon_space">28dp</dimen>
+
+
+    <dimen name="general_rb_selected_bg_l_r_padding">-1px</dimen>
+    <dimen name="general_rb_selected_stroke">2px</dimen>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:right="@dimen/general_rb_selected_bg_l_r_padding">
+
+        <shape
+            android:shape="rectangle">
+
+            <size
+                android:width="76dp"
+                android:height="29dp"/>
+
+            <corners
+                android:bottomLeftRadius="4dp"
+                android:topLeftRadius="4dp"/>
+            <solid
+                android:color="@color/navigation_title_frame_color"/>
+            <stroke
+                android:width="@dimen/general_rb_selected_stroke"
+                android:color="@color/navigation_title_frame_color"/>
+        </shape>
+    </item>
+</layer-list>
