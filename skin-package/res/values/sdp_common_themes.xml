@@ -41,6 +41,7 @@
         <item name="amTextColor">@color/navigation_title_rt_txt_color</item>
 
         <item name="svLayout_Height">@dimen/common_top_searchview_height</item>
+        <item name="popupMenuStyle">@style/CommonBase.Style.PopupMenu</item>
     </style>
 
     <!-- ActionBar 主题的基类，主要用于继承API主题，便于换肤时修改色系 -->

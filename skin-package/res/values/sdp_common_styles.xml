@@ -356,5 +356,12 @@
     </style>
     <!-- font style end -->
 
+    <style name="CommonBase.Style.PopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="overlapAnchor">true</item>
+    </style>
+
+    <style name="CommonBase.Style.DropDownPopupMenu">
+        <item name="popupMenuStyle">@style/Widget.AppCompat.PopupMenu</item>
+    </style>
 
 </resources>

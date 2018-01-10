@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-        android:color="@color/general_hollowedbluebutton_bg_ripple">
+    android:color="@color/general_hollowedbluebutton_bg_ripple">
 
     <!--Use this to define the shape of the ripple effect (rectangle, oval, ring or line).
     The color specified here isn't used anyway-->
@@ -15,7 +15,7 @@
                 android:top="8dp"/>
             <stroke
                 android:width="0.5dp"
-                android:color="@color/general_hollowedgraybutton_stroke"/>
+                android:color="@color/general_hollowedbluebutton_stroke"/>
         </shape>
     </item>
 
@@ -31,7 +31,7 @@
                 android:top="8dp"/>
             <stroke
                 android:width="0.5dp"
-                android:color="@color/general_hollowedgraybutton_stroke"/>
+                android:color="@color/general_hollowedbluebutton_stroke"/>
         </shape>
     </item>
 </ripple>
